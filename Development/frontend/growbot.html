@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GrowBot</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f3f0f0;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      color: rgb(0, 0, 0);
+      padding: 20px;
+      font-weight: bold;
+      text-align: center;
+      font-size: 2.5rem;
+      letter-spacing: 1px;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 40px;
+      align-items: center;
+    }
+
+    .input-row {
+      width: 90%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-bottom: 20px;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      min-width: 100px;
+    }
+
+    label {
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 0.8rem;
+      border: none;
+      border-radius: 6px;
+      outline: none;
+      background: #ffffff;
+    }
+
+    button {
+      margin: 10px auto 0;
+      padding: 12px 24px;
+      background: none;
+      border: 2px solid #000000;
+      color: #000000;
+      font-size: 1.1rem;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+      display: block;
+    }
+
+    button:hover {
+      background-color: #000000;
+      color: white;
+    }
+
+    .result-area {
+      margin: 20px auto;
+      width: 90%;
+      max-width: 800px;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      font-size: 1.2rem;
+      color: #555;
+    }
+
+    @media (max-width: 1200px) {
+      .input-row {
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .input-group {
+        min-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>GrowBot</header>
+
+<main>
+
+  <div class="input-row">
+    <div class="input-group">
+      <label for="ambientTemp">Ambient Temperature (°C)</label>
+      <input type="number" id="ambientTemp" placeholder="Enter ambient temperature">
+    </div>
+
+    <div class="input-group">
+      <label for="soilTemp">Soil Temperature (°C)</label>
+      <input type="number" id="soilTemp" placeholder="Enter soil temperature">
+    </div>
+
+    <div class="input-group">
+      <label for="humidity">Humidity (%)</label>
+      <input type="number" id="humidity" placeholder="Enter humidity">
+    </div>
+
+    <div class="input-group">
+      <label for="lightIntensity">Light Intensity</label>
+      <input type="number" id="lightIntensity" placeholder="Enter light intensity">
+    </div>
+
+    <div class="input-group">
+      <label for="chlorophyll">Chlorophyll Content</label>
+      <input type="number" id="chlorophyll" placeholder="Enter Chlorophyll content">
+    </div>
+
+    <div class="input-group">
+      <label for="electroSignal">Electrochemical Signal</label>
+      <input type="number" id="electroSignal" placeholder="Enter electrochemical signal">
+    </div>
+  </div>
+  <div class="input-row">
+    <div class="input-group">
+      <label for="ambientTemp">Ambient Temperature (°C)</label>
+      <input type="number" id="ambientTemp" placeholder="Enter ambient temperature">
+    </div>
+
+    <div class="input-group">
+      <label for="soilTemp">Soil Temperature (°C)</label>
+      <input type="number" id="soilTemp" placeholder="Enter soil temperature">
+    </div>
+
+    <div class="input-group">
+      <label for="humidity">Humidity (%)</label>
+      <input type="number" id="humidity" placeholder="Enter humidity">
+    </div>
+
+    <div class="input-group">
+      <label for="lightIntensity">Light Intensity</label>
+      <input type="number" id="lightIntensity" placeholder="Enter light intensity">
+    </div>
+
+    <div class="input-group">
+      <label for="chlorophyll">Chlorophyll Content</label>
+      <input type="number" id="chlorophyll" placeholder="Enter Chlorophyll content">
+    </div>
+
+    <div class="input-group">
+      <label for="electroSignal">Electrochemical Signal</label>
+      <input type="number" id="electroSignal" placeholder="Enter electrochemical signal">
+    </div>
+  </div>
+  <div class="input-row">
+    <div class="input-group">
+      <label for="ambientTemp">Ambient Temperature (°C)</label>
+      <input type="number" id="ambientTemp" placeholder="Enter ambient temperature">
+    </div>
+
+    <div class="input-group">
+      <label for="soilTemp">Soil Temperature (°C)</label>
+      <input type="number" id="soilTemp" placeholder="Enter soil temperature">
+    </div>
+
+    <div class="input-group">
+      <label for="humidity">Humidity (%)</label>
+      <input type="number" id="humidity" placeholder="Enter humidity">
+    </div>
+
+    <div class="input-group">
+      <label for="lightIntensity">Light Intensity</label>
+      <input type="number" id="lightIntensity" placeholder="Enter light intensity">
+    </div>
+
+    <div class="input-group">
+      <label for="chlorophyll">Chlorophyll Content</label>
+      <input type="number" id="chlorophyll" placeholder="Enter Chlorophyll content">
+    </div>
+
+    <div class="input-group">
+      <label for="electroSignal">Electrochemical Signal</label>
+      <input type="number" id="electroSignal" placeholder="Enter electrochemical signal">
+    </div>
+  </div>
+  <div class="input-row">
+    <div class="input-group">
+      <label for="ambientTemp">Ambient Temperature (°C)</label>
+      <input type="number" id="ambientTemp" placeholder="Enter ambient temperature">
+    </div>
+
+    <div class="input-group">
+      <label for="soilTemp">Soil Temperature (°C)</label>
+      <input type="number" id="soilTemp" placeholder="Enter soil temperature">
+    </div>
+
+    <div class="input-group">
+      <label for="humidity">Humidity (%)</label>
+      <input type="number" id="humidity" placeholder="Enter humidity">
+    </div>
+
+    <div class="input-group">
+      <label for="lightIntensity">Light Intensity</label>
+      <input type="number" id="lightIntensity" placeholder="Enter light intensity">
+    </div>
+
+    <div class="input-group">
+      <label for="chlorophyll">Chlorophyll Content</label>
+      <input type="number" id="chlorophyll" placeholder="Enter Chlorophyll content">
+    </div>
+
+    <div class="input-group">
+      <label for="electroSignal">Electrochemical Signal</label>
+      <input type="number" id="electroSignal" placeholder="Enter electrochemical signal">
+    </div>
+  </div>
+  <div class="input-row">
+    <div class="input-group">
+      <label for="ambientTemp">Ambient Temperature (°C)</label>
+      <input type="number" id="ambientTemp" placeholder="Enter ambient temperature">
+    </div>
+
+    <div class="input-group">
+      <label for="soilTemp">Soil Temperature (°C)</label>
+      <input type="number" id="soilTemp" placeholder="Enter soil temperature">
+    </div>
+
+    <div class="input-group">
+      <label for="humidity">Humidity (%)</label>
+      <input type="number" id="humidity" placeholder="Enter humidity">
+    </div>
+
+    <div class="input-group">
+      <label for="lightIntensity">Light Intensity</label>
+      <input type="number" id="lightIntensity" placeholder="Enter light intensity">
+    </div>
+
+    <div class="input-group">
+      <label for="chlorophyll">Chlorophyll Content</label>
+      <input type="number" id="chlorophyll" placeholder="Enter Chlorophyll content">
+    </div>
+
+    <div class="input-group">
+      <label for="electroSignal">Electrochemical Signal</label>
+      <input type="number" id="electroSignal" placeholder="Enter electrochemical signal">
+    </div>
+  </div>
+
+</main>
+
+<button type="submit">Submit</button>
+
+<div class="result-area" id="result">
+  Result will appear here after submission.
+</div>
+
+</body>
+</html>
