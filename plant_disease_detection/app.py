@@ -6,8 +6,7 @@ import numpy as np
 from PIL import Image
 import io
 
-import tensorflow as tf
-print(tf.__version__)
+
 print(tf.keras.models)
 
 app = Flask(__name__)
