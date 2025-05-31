@@ -15,7 +15,7 @@ from flask_cors import CORS
 CORS(app)
 
 # Load the model and scaler
-model = load_model('best_model2.keras', compile=False)
+model = load_model('best_model.keras', compile=False)
 scaler = joblib.load('scaler1.pkl') 
 
 @app.route('/predict', methods=['POST'])
