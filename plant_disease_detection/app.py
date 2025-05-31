@@ -13,7 +13,7 @@ app = Flask(__name__)
 CORS(app)
 model = tf.keras.models.load_model('trained_model.keras', compile=False)
 
-# List of class names
+
 class_name = [
     'Apple Apple scab',
     'Apple Black rot',
@@ -58,38 +58,36 @@ class_name = [
 def preprocess_image(image_bytes):
     try:
         image = Image.open(io.BytesIO(image_bytes)).convert('RGB')
-        image = image.resize((128, 128))  # Resize image to match model input size
-        image_array = np.array(image) # Normalize pixel values
-        return np.expand_dims(image_array, axis=0)  # Add batch dimension
+        image = image.resize((128, 128))  
+        image_array = np.array(image) 
+        return np.expand_dims(image_array, axis=0) 
     except Exception as e:
         raise ValueError(f"Error in processing image: {str(e)}")
 
 @app.route('/')
 def home():
-    return render_template('model_form.html')  # Render the form
+    return render_template('model_form.html')  
 
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
 
-        # Get the image file from the POST request
+        
         file = request.files['image']
         image_bytes = file.read()
         
-        # Preprocess the image
+        
         input_data = preprocess_image(image_bytes)
         
-        # Get predictions from the model
+        
         predictions = model.predict(input_data)
         
-        # Get the predicted class index and confidence
+        
         predicted_class = np.argmax(predictions, axis=-1)[0]
         confidence = float(np.max(predictions))
         
-        # Map the class index to the class name
         predicted_label = class_name[predicted_class]
 
-        # Return the response with the prediction
         return jsonify({
             'predicted_class': int(predicted_class),
             'class_label': predicted_label,
@@ -97,8 +95,7 @@ def predict():
         })
     
     except Exception as e:
-        # Return error message if an exception occurs
         return jsonify({'error': str(e)}), 400
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5001)  # Start the Flask app
+    app.run(debug=True, port=5001)  
