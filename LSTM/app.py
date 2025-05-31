@@ -14,7 +14,7 @@ app = Flask(__name__)
 from flask_cors import CORS
 CORS(app)
 
-# Load the model and scaler
+
 model = load_model('best_model.keras', compile=False)
 scaler = joblib.load('scaler1.pkl') 
 
@@ -27,20 +27,20 @@ def predict():
         if not data or len(data) != 5:
             return jsonify({"error": "Input must be a list of 5 timesteps, each with 6 values"}), 400
         
-        # Ensure the input has column names before passing it to the scaler
+        
         columns = [
             'Ambient_Temperature', 'Soil_Temperature', 'Humidity', 
             'Light_Intensity', 'Chlorophyll_Content', 'Electrochemical_Signal'
         ]
         
-        # Create a DataFrame to keep column names intact
+        
         user_input = pd.DataFrame(data, columns=columns)
         
         if user_input.shape != (5, 6):
             return jsonify({"error": "Each timestep must have exactly 6 features"}), 400
         
        
-        scaled_input = scaler.transform(user_input)  # Now the scaler will work with column names
+        scaled_input = scaler.transform(user_input)  
         scaled_input = scaled_input.reshape(1, 5, 6)
 
         
@@ -49,7 +49,7 @@ def predict():
        
         pad = np.zeros((prediction.shape[0], scaler.n_features_in_ - prediction.shape[1]))
         padded_pred = np.concatenate([prediction, pad], axis=1)
-        prediction_unscaled = scaler.inverse_transform(padded_pred)[:, :6]  # only the first 6
+        prediction_unscaled = scaler.inverse_transform(padded_pred)[:, :6]  
 
         return jsonify({
             "Predicted Output": prediction_unscaled[0].tolist()
